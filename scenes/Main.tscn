@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Main" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 344.0
+margin_top = 224.0
+margin_right = 377.0
+margin_bottom = 238.0
+rect_scale = Vector2( 10, 10 )
+text = "Holis"
+__meta__ = {
+"_edit_use_anchors_": false
+}
