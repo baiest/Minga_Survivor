@@ -3,12 +3,23 @@
 [node name="Main" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
-margin_left = 344.0
-margin_top = 224.0
-margin_right = 377.0
-margin_bottom = 238.0
+margin_left = 342.112
+margin_top = 67.3169
+margin_right = 375.112
+margin_bottom = 81.3169
 rect_scale = Vector2( 10, 10 )
 text = "Holis"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 236.301
+margin_top = 212.479
+margin_right = 347.301
+margin_bottom = 226.479
+rect_scale = Vector2( 4.7929, 4.87335 )
+text = "Jesus estuvo aquí"
 __meta__ = {
 "_edit_use_anchors_": false
 }
