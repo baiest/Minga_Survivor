@@ -22,8 +22,10 @@ func get_imput():
 	if is_on_floor() and jump:
 		Velocidad.y = jump_speed
 	if rigth:
+		$Player_sprite.scale = Vector2(2,2)
 		Velocidad.x += run_speed
 	if left:
+		$Player_sprite.scale = Vector2(-2,2)
 		Velocidad.x -= run_speed
 
 func _physics_process(delta):
