@@ -70,7 +70,7 @@ limit_left = 0
 limit_bottom = 700
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2( 512, 616 )
+position = Vector2( 512, 688 )
 scale = Vector2( 4, 1 )
 __meta__ = {
 "_edit_group_": true
@@ -83,7 +83,7 @@ texture = ExtResource( 2 )
 shape = SubResource( 2 )
 
 [node name="pared" type="StaticBody2D" parent="."]
-position = Vector2( -16, 448 )
+position = Vector2( -16, 520 )
 scale = Vector2( 0.14584, 11.6753 )
 __meta__ = {
 "_edit_group_": true
