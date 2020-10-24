@@ -28,9 +28,16 @@ func get_imput():
 		$Player_sprite.scale = Vector2(-2,2)
 		Velocidad.x -= run_speed
 
+# Condicion si el jugador se sale del escenario
+func die():
+	if ($".".global_position.y > 700):
+		$".".global_position = Vector2(475, 40)
+	
+
 func _physics_process(delta):
 	Velocidad.y += Gravedad * delta
 	get_imput()
+	die()
 	Velocidad = move_and_slide(Velocidad, Vector2(0,-1))
 	
 
