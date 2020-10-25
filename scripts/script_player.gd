@@ -22,11 +22,16 @@ func get_imput():
 	if is_on_floor() and jump:
 		Velocidad.y = jump_speed
 	if rigth:
-		$Player_sprite.scale = Vector2(2,2)
+		$Correr.scale = Vector2(1,1)
 		Velocidad.x += run_speed
-	if left:
-		$Player_sprite.scale = Vector2(-2,2)
+		$Correr.play('correr')
+	elif left:
+		$Correr.scale = Vector2(-1,1)
 		Velocidad.x -= run_speed
+		$Correr.play('correr')
+	else:
+		$Correr.stop()
+	
 
 # Condicion si el jugador se sale del escenario
 func die():
