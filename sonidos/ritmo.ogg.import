@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ritmo.ogg-407782ca8df0f447ff9e44a351d33a7d.oggstr"
+
+[deps]
+
+source_file="res://sonidos/ritmo.ogg"
+dest_files=[ "res://.import/ritmo.ogg-407782ca8df0f447ff9e44a351d33a7d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
