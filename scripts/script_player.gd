@@ -34,15 +34,21 @@ func get_imput():
 	
 
 # Condicion si el jugador se sale del escenario
-func die():
+func die(delta):
 	if ($".".global_position.y > 700):
 		$".".global_position = Vector2(475, 40)
+	
+	var collision = move_and_collide(Vector2() * delta)
+	if collision:
+		if collision.collider.name == "Enemigo":
+			$".".global_position = Vector2(475, 40)
+			print("Moriste")
 	
 
 func _physics_process(delta):
 	Velocidad.y += Gravedad * delta
 	get_imput()
-	die()
+	die(delta)
 	Velocidad = move_and_slide(Velocidad, Vector2(0,-1))
 	
 
