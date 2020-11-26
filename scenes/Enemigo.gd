@@ -22,10 +22,6 @@ func animacion():
 func _physics_process(delta):
 	Velocidad.y += Gravedad * delta
 	
-	if player.position.x>position.x:
-		get_node("Atacar").flip_h(true)
-	
-	
 	dist = player.global_position.distance_to($Atacar.global_position)
 	dir = player.global_position.x - $Atacar.global_position.x
 	
