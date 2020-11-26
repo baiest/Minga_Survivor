@@ -25,6 +25,12 @@ func _physics_process(delta):
 	dist = player.global_position.distance_to($Atacar.global_position)
 	dir = player.global_position.x - $Atacar.global_position.x
 	
+#Esto hace que el sprite del enemigo se gire en horizontal para que mire hacia el player
+	if player.position.x > position.x:
+		get_node("Atacar").set_flip_h(true)
+	else:
+		get_node("Atacar").set_flip_h(false)
+	
 	
 	if dist<distancia: 
 		$Atacar.play("atacar")
