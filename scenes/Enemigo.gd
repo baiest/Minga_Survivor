@@ -34,20 +34,27 @@ func _physics_process(delta):
 	
 	if dist<distancia: 
 		$Atacar.play("atacar")
+		
 		if ataque:
-			$PrimerSalto.play("salto")
+		#	$PrimerSalto.play("salto")
 			ataque = false
-		movcont = dir 
+		
+		movcont = dir
+		Velocidad.x = movcont
 	else:
 		$Atacar.play("esperar")
+		
+		#movcont = 0
 	
 	#Cambio de colision
-	if $Atacar.frame == 2:
+	if $Atacar.frame == 1:
 		$Normal.disabled =true
 		$CollisionAtaque.disabled = false
 	else:
 		$Normal.disabled =false
 		$CollisionAtaque.disabled = true
-	move_and_slide(Vector2(movcont, 1).normalized() * correr * delta)
-	Velocidad = move_and_slide(Velocidad, Vector2(0,-1))
+
+
+	#move_and_slide(Vector2(movcont, 0).normalized() * correr * delta)
+	Velocidad = move_and_slide(Velocidad, Vector2(0,0))
 	
