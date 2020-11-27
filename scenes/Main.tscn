@@ -14,7 +14,7 @@
 [ext_resource path="res://sprites/Enemigo/1.png" type="Texture" id=12]
 [ext_resource path="res://sprites/Enemigo/4.png" type="Texture" id=13]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
@@ -25,10 +25,10 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 16 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 40, 72 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 53.6705, 73.4031 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 10 ) ],
 "loop": true,
@@ -41,14 +41,14 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "salto"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -56,7 +56,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1536, 520 ), Vector2( 1432, 400 ), Vector2( 1360, 520 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 127.823, 15.6237 )
 
 [node name="Main" type="Node2D"]
@@ -105,7 +105,7 @@ __meta__ = {
 }
 
 [node name="Correr" type="AnimatedSprite" parent="Player"]
-frames = SubResource( 6 )
+frames = SubResource( 1 )
 animation = "correr"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -120,7 +120,7 @@ limit_left = 0
 limit_bottom = 700
 
 [node name="Enemigo" type="KinematicBody2D" parent="."]
-position = Vector2( 1536, 520 )
+position = Vector2( 1360, 520 )
 z_index = 1
 script = ExtResource( 8 )
 __meta__ = {
@@ -128,22 +128,24 @@ __meta__ = {
 }
 
 [node name="Normal" type="CollisionShape2D" parent="Enemigo"]
-position = Vector2( -8, 8 )
-shape = SubResource( 4 )
+position = Vector2( -2.51477, 8 )
+shape = SubResource( 3 )
+one_way_collision_margin = 0.0
 
 [node name="Atacar" type="AnimatedSprite" parent="Enemigo"]
-position = Vector2( 0, 8 )
+position = Vector2( -0.537109, 5.87793 )
 scale = Vector2( -0.05, 0.05 )
-frames = SubResource( 5 )
-animation = "esperar"
+frames = SubResource( 4 )
+animation = "atacar"
 
 [node name="CollisionAtaque" type="CollisionPolygon2D" parent="Enemigo"]
-visible = false
-polygon = PoolVector2Array( -8, -64, 72, 8, 72, 56, 64, 64, 24, 40, 32, 88, 16, 88, -72, 88, -56, 56, -56, 32, -48, 24, -48, -16, -32, -56 )
+build_mode = 1
+polygon = PoolVector2Array( -4.34741, -63.9137, 69.0051, 10.2573, 69.0051, 44.9056, 38.9218, 81.9386, -43.9043, 80.7781, -76.8674, 39.7968, -75.0857, 10.3971 )
 disabled = true
+one_way_collision_margin = 0.0
 
 [node name="PrimerSalto" type="AnimationPlayer" parent="Enemigo"]
-anims/salto = SubResource( 7 )
+anims/salto = SubResource( 5 )
 
 [node name="pared" type="StaticBody2D" parent="."]
 position = Vector2( -16, 520 )
@@ -153,7 +155,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pared"]
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 50.75, 28.5 )
