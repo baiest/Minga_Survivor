@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ConcreteWall.png-4c82d72ff9bacb63dd918dc8634a99e6.stex"
+path="res://.import/street.png-65c147ad950e2892e52387658a833f29.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ConcreteWall.png"
-dest_files=[ "res://.import/ConcreteWall.png-4c82d72ff9bacb63dd918dc8634a99e6.stex" ]
+source_file="res://sprites/textures/street.png"
+dest_files=[ "res://.import/street.png-65c147ad950e2892e52387658a833f29.stex" ]
 
 [params]
 
