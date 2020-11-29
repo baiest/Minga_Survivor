@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pixil-frame-3.png-ca98146c0e46a74ab3b10e409c7a6000.stex"
+path="res://.import/2.png-2d040bd3ab504f0e922d56b001401e9f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Player/Misak/pixil-frame-3.png"
-dest_files=[ "res://.import/pixil-frame-3.png-ca98146c0e46a74ab3b10e409c7a6000.stex" ]
+source_file="res://sprites/Player/Misak/2.png"
+dest_files=[ "res://.import/2.png-2d040bd3ab504f0e922d56b001401e9f.stex" ]
 
 [params]
 
