@@ -26,8 +26,11 @@ animations = [ {
 extents = Vector2( 20, 16 )
 
 [sub_resource type="RectangleShape2D" id=3]
+<<<<<<< HEAD
 extents = Vector2( 40, 72 )
-
+=======
+extents = Vector2( 53.6705, 73.4031 )
+>>>>>>> 01328cb84b6bcac172bff0075fedb3b185b9df71
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -129,17 +132,24 @@ __meta__ = {
 }
 
 [node name="Normal" type="CollisionShape2D" parent="Enemigo"]
-
+<<<<<<< HEAD
 position = Vector2( -8, 8 )
 shape = SubResource( 3 )
-
+=======
+position = Vector2( -2.51477, 8 )
+shape = SubResource( 3 )
+one_way_collision_margin = 0.0
+>>>>>>> 01328cb84b6bcac172bff0075fedb3b185b9df71
 
 [node name="Atacar" type="AnimatedSprite" parent="Enemigo"]
 position = Vector2( -0.537109, 5.87793 )
 scale = Vector2( -0.05, 0.05 )
 frames = SubResource( 4 )
+<<<<<<< HEAD
 animation = "esperar"
-
+=======
+animation = "atacar"
+>>>>>>> 01328cb84b6bcac172bff0075fedb3b185b9df71
 
 [node name="CollisionAtaque" type="CollisionPolygon2D" parent="Enemigo"]
 build_mode = 1
