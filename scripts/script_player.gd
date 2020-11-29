@@ -6,7 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 var Gravedad = 2500
 var Velocidad = Vector2()
-var run_speed = 350
+var run_speed = 500
 var jump_speed = -500
 
 # Called when the node enters the scene tree for the first time.
@@ -22,15 +22,15 @@ func get_imput():
 	if is_on_floor() and jump:
 		Velocidad.y = jump_speed
 	if rigth:
-		$Correr.scale = Vector2(1,1)
+		$Correr.scale = Vector2(0.05,0.05)
 		Velocidad.x += run_speed
 		$Correr.play('correr')
 	elif left:
-		$Correr.scale = Vector2(-1,1)
+		$Correr.scale = Vector2(-0.05,0.05)
 		Velocidad.x -= run_speed
 		$Correr.play('correr')
 	else:
-		$Correr.stop()
+		$Correr.play('quieto')
 	
 
 # Condicion si el jugador se sale del escenario
