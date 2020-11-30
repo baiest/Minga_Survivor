@@ -25,7 +25,7 @@ animations = [ {
 "speed": 8.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
+"loop": false,
 "name": "ataque",
 "speed": 5.0
 }, {
@@ -110,7 +110,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" type="KinematicBody2D" parent="."]
+[node name="Player" type="KinematicBody2D" parent="." groups=[
+"player",
+]]
 position = Vector2( 472, 48 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -123,7 +125,7 @@ frames = SubResource( 1 )
 animation = "quieto"
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionNormal" type="CollisionShape2D" parent="Player"]
 position = Vector2( -4.50742, 0.49617 )
 scale = Vector2( 2, 3 )
 shape = SubResource( 2 )
@@ -134,7 +136,13 @@ current = true
 limit_left = 0
 limit_bottom = 700
 
-[node name="Enemigo" type="KinematicBody2D" parent="."]
+[node name="CollisionAtaque" type="CollisionPolygon2D" parent="Player"]
+polygon = PoolVector2Array( -59.4622, -17.4582, -47.808, -30.7015, -35.6242, -38.6474, -4.89978, -40.2366, 30.9795, -38.9143, 45.4686, -33.2446, 58.0677, -18.7556, 61.8475, 0.143265, 35.7537, 72.611, -34.5648, 73.1259, -62.1108, -1.03649 )
+disabled = true
+
+[node name="Enemigo" type="KinematicBody2D" parent="." groups=[
+"enemigo",
+]]
 position = Vector2( 1360, 520 )
 z_index = 1
 script = ExtResource( 8 )
