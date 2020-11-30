@@ -49,17 +49,24 @@ func get_imput():
 func die(delta):
 	if ($".".global_position.y > 700):
 		$".".global_position = Vector2(475, 40)
-	
+
+	#obteniendo el objeto de colision
 	var collision = move_and_collide(Vector2() * delta)
+	#verificar que haya colision
 	if collision:
+		#si coliciona un enemigo mientras se lanza el ataque, el enemigo muere
 		if collision.collider.is_in_group('enemigo') && $Correr.animation == "ataque":
 			print("Mataste al enemigo ",get_parent().get_node(collision.collider.name))
 			get_parent().get_node(collision.collider.name).queue_free()
-
-		elif collision.get_collider_shape_index() == 1:
+		#si colisiona un enemigo mietras el enemigo esta atacando morimos
+		elif collision.collider.is_in_group('enemigo') && collision.get_collider_shape_index() == 1:
 			$".".global_position = Vector2(475, 40)
 			print("Moriste ",collision.get_collider_shape_index())
-	
+		#si colisiona con un rehen se desactiva el collider del rehen
+		if collision.collider.is_in_group('rehenes'):
+			print("Liberaste al rehen ",collision.collider.get_node("./ColisionRehen").get_name())
+			collision.collider.get_node("./ColisionRehen").disabled = true
+			collision.collider.get_node("./Estado").play('libre')
 
 func _physics_process(delta):
 	Velocidad.y += Gravedad * delta
