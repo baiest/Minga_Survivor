@@ -18,6 +18,7 @@ func get_imput():
 	var rigth = Input.is_action_pressed("ui_right")
 	var left = Input.is_action_pressed("ui_left")
 	var jump = Input.is_action_pressed("ui_up")
+	var atac = Input.is_action_just_pressed("ui_atac")
 	
 	if is_on_floor() and jump:
 		Velocidad.y = jump_speed
@@ -29,9 +30,20 @@ func get_imput():
 		$Correr.scale = Vector2(-0.05,0.05)
 		Velocidad.x -= run_speed
 		$Correr.play('correr')
-	else:
+	elif atac:
 		$Correr.play('quieto')
-	
+		$Correr.play('ataque')
+	else:
+		if $Correr.animation != "ataque":
+			$Correr.play('quieto')
+			
+	if $Correr.animation == "ataque":
+		$CollisionNormal.disabled = true
+		$CollisionAtaque.disabled = false
+		
+	else:
+		$CollisionNormal.disabled = false
+		$CollisionAtaque.disabled = true
 
 # Condicion si el jugador se sale del escenario
 func die(delta):
@@ -40,9 +52,13 @@ func die(delta):
 	
 	var collision = move_and_collide(Vector2() * delta)
 	if collision:
-		if collision.collider.name == "Enemigo":
+		if collision.collider.name == "Enemigo" && $Correr.animation == "ataque":
+			print("Mataste al enemigo ",collision.get_collider_shape_index())
+			get_node("../Enemigo").queue_free()
+
+		elif collision.get_collider_shape_index() == 1:
 			$".".global_position = Vector2(475, 40)
-			print("Moriste")
+			print("Moriste ",collision.get_collider_shape_index())
 	
 
 func _physics_process(delta):
@@ -50,7 +66,3 @@ func _physics_process(delta):
 	get_imput()
 	die(delta)
 	Velocidad = move_and_slide(Velocidad, Vector2(0,-1))
-	
-
-	
-
