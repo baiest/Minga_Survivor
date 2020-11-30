@@ -53,8 +53,8 @@ func die(delta):
 	var collision = move_and_collide(Vector2() * delta)
 	if collision:
 		if collision.collider.is_in_group('enemigo') && $Correr.animation == "ataque":
-			print("Mataste al enemigo ",collision.get_collider_shape_index())
-			get_node("../Enemigo").queue_free()
+			print("Mataste al enemigo ",get_parent().get_node(collision.collider.name))
+			get_parent().get_node(collision.collider.name).queue_free()
 
 		elif collision.get_collider_shape_index() == 1:
 			$".".global_position = Vector2(475, 40)
