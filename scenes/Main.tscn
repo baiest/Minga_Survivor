@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://sprites/Player/Misak/5.png" type="Texture" id=1]
 [ext_resource path="res://tiles/tile_nive1.tres" type="TileSet" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://sprites/Player/Misak/2.png" type="Texture" id=16]
 [ext_resource path="res://sprites/Player/Misak/3.png" type="Texture" id=17]
 [ext_resource path="res://sprites/Rehen/2.png" type="Texture" id=18]
+[ext_resource path="res://scenes/Control.tscn" type="PackedScene" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -86,10 +87,10 @@ tracks/0/keys = {
 "values": [ Vector2( 1536, 520 ), Vector2( 1432, 400 ), Vector2( 1360, 520 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 127.823, 15.6237 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
@@ -102,7 +103,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 32.2922
 height = 39.1798
 
@@ -241,7 +242,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pared"]
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 50.75, 28.5 )
@@ -260,8 +261,20 @@ __meta__ = {
 [node name="Estado" type="AnimatedSprite" parent="Rehen"]
 position = Vector2( 2637.06, 533.762 )
 scale = Vector2( 0.05, 0.05 )
-frames = SubResource( 7 )
+frames = SubResource( 8 )
 
 [node name="ColisionRehen" type="CollisionShape2D" parent="Rehen"]
 position = Vector2( 2647.66, 552.828 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
+
+[node name="PlayerGui" type="CanvasLayer" parent="."]
+
+[node name="Health" parent="PlayerGui" instance=ExtResource( 19 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -152.0
+margin_top = 32.0
+margin_right = 0.0
+margin_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2

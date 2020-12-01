@@ -8,6 +8,7 @@ var Gravedad = 2500
 var Velocidad = Vector2()
 var run_speed = 500
 var jump_speed = -500
+var health = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,8 +48,15 @@ func get_imput():
 
 # Condicion si el jugador se sale del escenario
 func die(delta):
+	#modificada muerte cuando cae al vacio
 	if ($".".global_position.y > 700):
-		$".".global_position = Vector2(475, 40)
+		$".".global_position.y -= 500
+		$".".global_position.x -= 400
+		if (health == 0):
+			get_tree().reload_current_scene()
+		else:
+			get_parent().get_node("PlayerGui").get_node("Health").get_child(health-1).visible = false
+		health-=1
 
 	#obteniendo el objeto de colision
 	var collision = move_and_collide(Vector2() * delta)
@@ -60,8 +68,14 @@ func die(delta):
 			get_parent().get_node(collision.collider.name).queue_free()
 		#si colisiona un enemigo mietras el enemigo esta atacando morimos
 		elif collision.collider.is_in_group('enemigo') && collision.get_collider_shape_index() == 1:
-			$".".global_position = Vector2(475, 40)
-			print("Moriste ",collision.get_collider_shape_index())
+			if (health == 0):
+				#Reinicio del nivel
+				get_tree().reload_current_scene() 
+			else:
+				#Quitar un corazon y correr al jugador
+				$".".global_position.x -= 80
+				get_parent().get_node("PlayerGui").get_node("Health").get_child(health-1).visible = false
+				health -= 1
 		#si colisiona con un rehen se desactiva el collider del rehen
 		if collision.collider.is_in_group('rehenes'):
 			print("Liberaste al rehen ",collision.collider.get_node("./ColisionRehen").get_name())
