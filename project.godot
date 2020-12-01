@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Minga_Survivor"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/InicioGui.tscn"
 boot_splash/image="res://gui/Play.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://art/icon.png"
