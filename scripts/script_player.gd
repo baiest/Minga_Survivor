@@ -32,6 +32,7 @@ func get_imput():
 		Velocidad.x -= run_speed
 		$Correr.play('correr')
 	elif atac:
+		$Machetazo.play()
 		$Correr.play('quieto')
 		$Correr.play('ataque')
 	else:

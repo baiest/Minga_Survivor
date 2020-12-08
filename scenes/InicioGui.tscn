@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://NewGame.gd" type="Script" id=1]
 [ext_resource path="res://gui/Play.png" type="Texture" id=2]
+[ext_resource path="res://sonidos/intro.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/Intro.gd" type="Script" id=4]
 
 [node name="InicioGui" type="Control"]
 anchor_right = 1.0
@@ -34,3 +36,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioIntro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+script = ExtResource( 4 )

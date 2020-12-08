@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://sprites/Player/Misak/5.png" type="Texture" id=1]
 [ext_resource path="res://tiles/tile_nive1.tres" type="TileSet" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://sprites/Jefe/2.png" type="Texture" id=23]
 [ext_resource path="res://sprites/Jefe/1.png" type="Texture" id=24]
 [ext_resource path="res://scenes/Jefe.gd" type="Script" id=25]
+[ext_resource path="res://sonidos/machetazo.wav" type="AudioStream" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -197,6 +198,7 @@ autoplay = true
 
 [node name="Ritmo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+volume_db = -6.433
 
 [node name="Label" type="Label" parent="."]
 margin_left = 344.0
@@ -252,6 +254,9 @@ limit_bottom = 700
 [node name="CollisionAtaque" type="CollisionPolygon2D" parent="Player"]
 polygon = PoolVector2Array( -59.4622, -17.4582, -47.808, -30.7015, -35.6242, -38.6474, -4.89978, -40.2366, 30.9795, -38.9143, 45.4686, -33.2446, 58.0677, -18.7556, 61.8475, 0.143265, 35.7537, 72.611, -34.5648, 73.1259, -62.1108, -1.03649 )
 disabled = true
+
+[node name="Machetazo" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 26 )
 
 [node name="Enemigo" type="KinematicBody2D" parent="." groups=[
 "enemigo",
