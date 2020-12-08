@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://sprites/Player/Misak/5.png" type="Texture" id=1]
 [ext_resource path="res://tiles/tile_nive1.tres" type="TileSet" id=2]
@@ -20,12 +20,17 @@
 [ext_resource path="res://sprites/Rehen/2.png" type="Texture" id=18]
 [ext_resource path="res://scenes/Control.tscn" type="PackedScene" id=19]
 [ext_resource path="res://sprites/Background/backgorund.jpg" type="Texture" id=20]
+[ext_resource path="res://sprites/Jefe/4.png" type="Texture" id=21]
+[ext_resource path="res://sprites/Jefe/3.png" type="Texture" id=22]
+[ext_resource path="res://sprites/Jefe/2.png" type="Texture" id=23]
+[ext_resource path="res://sprites/Jefe/1.png" type="Texture" id=24]
+[ext_resource path="res://scenes/Jefe.gd" type="Script" id=25]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "quieto",
+"frames": [ ExtResource( 17 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "ataque",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 6 ) ],
@@ -33,9 +38,9 @@ animations = [ {
 "name": "correr",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": false,
-"name": "ataque",
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "quieto",
 "speed": 5.0
 } ]
 
@@ -47,14 +52,14 @@ extents = Vector2( 53.6705, 73.4031 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 12 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "esperar",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "atacar",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "esperar",
 "speed": 5.0
 } ]
 
@@ -74,6 +79,79 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=6]
+resource_name = "salto"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 3,
+"values": [ Vector2( 1536, 520 ), Vector2( 1432, 400 ), Vector2( 1360, 520 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "salto"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 3,
+"values": [ Vector2( 1536, 520 ), Vector2( 1432, 400 ), Vector2( 1360, 520 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "salto"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 3,
+"values": [ Vector2( 1536, 520 ), Vector2( 1432, 400 ), Vector2( 1360, 520 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "salto"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 3,
+"values": [ Vector2( 1536, 520 ), Vector2( 1432, 400 ), Vector2( 1360, 520 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "atacar",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "esperar",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=14]
 resource_name = "salto"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -235,6 +313,128 @@ one_way_collision_margin = 0.0
 [node name="PrimerSalto" type="AnimationPlayer" parent="Enemigo2"]
 anims/salto = SubResource( 6 )
 
+[node name="Enemigo3" type="KinematicBody2D" parent="." groups=[
+"enemigo",
+]]
+position = Vector2( 4296, 552 )
+z_index = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Normal" type="CollisionShape2D" parent="Enemigo3"]
+position = Vector2( -2.51477, 8 )
+shape = SubResource( 3 )
+one_way_collision_margin = 0.0
+
+[node name="Atacar" type="AnimatedSprite" parent="Enemigo3"]
+position = Vector2( -0.537109, 5.87793 )
+scale = Vector2( -0.05, 0.05 )
+frames = SubResource( 4 )
+animation = "atacar"
+
+[node name="CollisionAtaque" type="CollisionPolygon2D" parent="Enemigo3"]
+build_mode = 1
+polygon = PoolVector2Array( -4.34741, -63.9137, 69.0051, 10.2573, 69.0051, 44.9056, 38.9218, 81.9386, -43.9043, 80.7781, -76.8674, 39.7968, -75.0857, 10.3971 )
+disabled = true
+one_way_collision_margin = 0.0
+
+[node name="PrimerSalto" type="AnimationPlayer" parent="Enemigo3"]
+anims/salto = SubResource( 10 )
+
+[node name="Enemigo4" type="KinematicBody2D" parent="." groups=[
+"enemigo",
+]]
+position = Vector2( 5768, 552 )
+z_index = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Normal" type="CollisionShape2D" parent="Enemigo4"]
+position = Vector2( -2.51477, 8 )
+shape = SubResource( 3 )
+one_way_collision_margin = 0.0
+
+[node name="Atacar" type="AnimatedSprite" parent="Enemigo4"]
+position = Vector2( -0.537109, 5.87793 )
+scale = Vector2( -0.05, 0.05 )
+frames = SubResource( 4 )
+animation = "atacar"
+
+[node name="CollisionAtaque" type="CollisionPolygon2D" parent="Enemigo4"]
+build_mode = 1
+polygon = PoolVector2Array( -4.34741, -63.9137, 69.0051, 10.2573, 69.0051, 44.9056, 38.9218, 81.9386, -43.9043, 80.7781, -76.8674, 39.7968, -75.0857, 10.3971 )
+disabled = true
+one_way_collision_margin = 0.0
+
+[node name="PrimerSalto" type="AnimationPlayer" parent="Enemigo4"]
+anims/salto = SubResource( 11 )
+
+[node name="Enemigo5" type="KinematicBody2D" parent="." groups=[
+"enemigo",
+]]
+position = Vector2( 6624, 528 )
+z_index = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Normal" type="CollisionShape2D" parent="Enemigo5"]
+position = Vector2( -2.51477, 8 )
+shape = SubResource( 3 )
+one_way_collision_margin = 0.0
+
+[node name="Atacar" type="AnimatedSprite" parent="Enemigo5"]
+position = Vector2( -0.537109, 5.87793 )
+scale = Vector2( -0.05, 0.05 )
+frames = SubResource( 4 )
+animation = "atacar"
+
+[node name="CollisionAtaque" type="CollisionPolygon2D" parent="Enemigo5"]
+build_mode = 1
+polygon = PoolVector2Array( -4.34741, -63.9137, 69.0051, 10.2573, 69.0051, 44.9056, 38.9218, 81.9386, -43.9043, 80.7781, -76.8674, 39.7968, -75.0857, 10.3971 )
+disabled = true
+one_way_collision_margin = 0.0
+
+[node name="PrimerSalto" type="AnimationPlayer" parent="Enemigo5"]
+anims/salto = SubResource( 12 )
+
+[node name="Jefe" type="KinematicBody2D" parent="." groups=[
+"enemigo",
+]]
+position = Vector2( 9576, 352 )
+z_index = 1
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="NormalJefe" type="CollisionShape2D" parent="Jefe"]
+position = Vector2( -2.51477, 8 )
+scale = Vector2( 2.4, 2.92 )
+shape = SubResource( 3 )
+one_way_collision_margin = 0.0
+
+[node name="AtacarJefe" type="AnimatedSprite" parent="Jefe"]
+position = Vector2( -0.537109, 5.87793 )
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 13 )
+animation = "esperar"
+
+[node name="CollisionAtaqueJefe" type="CollisionPolygon2D" parent="Jefe"]
+scale = Vector2( 1.88, 2.84 )
+build_mode = 1
+polygon = PoolVector2Array( -4.34741, -63.9137, 69.0051, 10.2573, 69.0051, 44.9056, 38.9218, 81.9386, -43.9043, 80.7781, -76.8674, 39.7968, -75.0857, 10.3971 )
+disabled = true
+one_way_collision_margin = 0.0
+
+[node name="PrimerSalto" type="AnimationPlayer" parent="Jefe"]
+anims/salto = SubResource( 14 )
+
 [node name="pared" type="StaticBody2D" parent="."]
 position = Vector2( -16, 520 )
 scale = Vector2( 0.14584, 11.6753 )
@@ -265,6 +465,40 @@ scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 8 )
 
 [node name="ColisionRehen" type="CollisionShape2D" parent="Rehen"]
+position = Vector2( 2647.66, 552.828 )
+shape = SubResource( 9 )
+
+[node name="Rehen2" type="StaticBody2D" parent="." groups=[
+"rehenes",
+]]
+position = Vector2( 2408, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Estado" type="AnimatedSprite" parent="Rehen2"]
+position = Vector2( 2637.06, 533.762 )
+scale = Vector2( 0.05, 0.05 )
+frames = SubResource( 8 )
+
+[node name="ColisionRehen" type="CollisionShape2D" parent="Rehen2"]
+position = Vector2( 2647.66, 552.828 )
+shape = SubResource( 9 )
+
+[node name="Rehen3" type="StaticBody2D" parent="." groups=[
+"rehenes",
+]]
+position = Vector2( 4088, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Estado" type="AnimatedSprite" parent="Rehen3"]
+position = Vector2( 2637.06, 533.762 )
+scale = Vector2( 0.05, 0.05 )
+frames = SubResource( 8 )
+
+[node name="ColisionRehen" type="CollisionShape2D" parent="Rehen3"]
 position = Vector2( 2647.66, 552.828 )
 shape = SubResource( 9 )
 
