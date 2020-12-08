@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://NewGame.gd" type="Script" id=1]
+[ext_resource path="res://gui/Play.png" type="Texture" id=2]
+[ext_resource path="res://sonidos/intro.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/Intro.gd" type="Script" id=4]
+
+[node name="InicioGui" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_right = -8.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="NewGame" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 416.0
+margin_top = 272.0
+margin_right = -424.0
+margin_bottom = -288.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Iniciar"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioIntro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+script = ExtResource( 4 )
