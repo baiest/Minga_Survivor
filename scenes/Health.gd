@@ -1,5 +1,5 @@
 extends Control
-
+## NO FUNCIONA, IGNORAR
 var hearts  = 4 setget set_hearts
 var max_hearts = 4 setget set_max_hearts
 
