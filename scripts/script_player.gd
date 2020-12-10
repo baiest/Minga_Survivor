@@ -88,3 +88,4 @@ func _physics_process(delta):
 	get_imput()
 	die(delta)
 	Velocidad = move_and_slide(Velocidad, Vector2(0,-1))
+
