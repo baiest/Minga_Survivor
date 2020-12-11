@@ -24,13 +24,14 @@
 [ext_resource path="res://sprites/Jefe/3.png" type="Texture" id=22]
 [ext_resource path="res://sprites/Jefe/2.png" type="Texture" id=23]
 [ext_resource path="res://sprites/Jefe/1.png" type="Texture" id=24]
-[ext_resource path="res://scenes/Jefe.gd" type="Script" id=25]
+[ext_resource path="res://scripts/Jefe.gd" type="Script" id=25]
 [ext_resource path="res://sonidos/machetazo.wav" type="AudioStream" id=26]
 [ext_resource path="res://scenes/PlataformaV2.tscn" type="PackedScene" id=27]
 [ext_resource path="res://sonidos/startgame.wav" type="AudioStream" id=28]
 [ext_resource path="res://scenes/PlataformaV1.tscn" type="PackedScene" id=29]
 [ext_resource path="res://scenes/PlataformaH1.tscn" type="PackedScene" id=30]
 [ext_resource path="res://scenes/PlataformaH2.tscn" type="PackedScene" id=31]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 127.823, 15.6237 )
