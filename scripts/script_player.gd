@@ -57,6 +57,7 @@ func die(delta):
 			get_tree().reload_current_scene()
 		else:
 			get_parent().get_node("PlayerGui").get_node("Health").get_child(health-1).visible = false
+		$MuertePlayer.play()
 		health-=1
 
 	#obteniendo el objeto de colision
@@ -65,7 +66,8 @@ func die(delta):
 	if collision:
 		#si coliciona un enemigo mientras se lanza el ataque, el enemigo muere
 		if collision.collider.is_in_group('enemigo') && $Correr.animation == "ataque":
-			print("Mataste al enemigo ",get_parent().get_node(collision.collider.name))
+			#print("Mataste al enemigo ",get_parent().get_node(collision.collider.name))
+			$MuerteEnemigo.play()
 			get_parent().get_node(collision.collider.name).queue_free()
 		#si colisiona un enemigo mietras el enemigo esta atacando morimos
 		elif collision.collider.is_in_group('enemigo') && collision.get_collider_shape_index() == 1:
@@ -73,13 +75,16 @@ func die(delta):
 				#Reinicio del nivel
 				get_tree().reload_current_scene() 
 			else:
+				#sonido de muerte
+				$MuertePlayer.play()
 				#Quitar un corazon y correr al jugador
 				$".".global_position.x -= 80
 				get_parent().get_node("PlayerGui").get_node("Health").get_child(health-1).visible = false
 				health -= 1
 		#si colisiona con un rehen se desactiva el collider del rehen
 		if collision.collider.is_in_group('rehenes'):
-			print("Liberaste al rehen ",collision.collider.get_node("./ColisionRehen").get_name())
+			#print("Liberaste al rehen ",collision.collider.get_node("./ColisionRehen").get_name())
+			$LiberacionRehen.play()
 			collision.collider.get_node("./ColisionRehen").disabled = true
 			collision.collider.get_node("./Estado").play('libre')
 
