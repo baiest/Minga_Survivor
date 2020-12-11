@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -32 ), Vector2( 0, -64 ), Vector2( 0, -96 ), Vector2( 0, -128 ) ]
 }
 
-[node name="Plataforma" type="Node2D"]
+[node name="PlataformaV1" type="Node2D"]
 
 [node name="Plataforma" type="KinematicBody2D" parent="."]
 position = Vector2( 0, -96 )
