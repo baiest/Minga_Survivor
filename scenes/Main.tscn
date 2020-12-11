@@ -1,10 +1,10 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://sprites/Player/Misak/5.png" type="Texture" id=1]
 [ext_resource path="res://tiles/tile_nive1.tres" type="TileSet" id=2]
 [ext_resource path="res://scripts/script_player.gd" type="Script" id=3]
 [ext_resource path="res://sonidos/Ambientacion.ogg" type="AudioStream" id=4]
-[ext_resource path="res://sonidos/ritmo.ogg" type="AudioStream" id=5]
+[ext_resource path="res://sonidos/ritmo2.wav" type="AudioStream" id=5]
 [ext_resource path="res://sprites/Player/Misak/4.png" type="Texture" id=6]
 [ext_resource path="res://sprites/Player/Misak/6.png" type="Texture" id=7]
 [ext_resource path="res://scripts/Enemigo.gd" type="Script" id=8]
@@ -31,7 +31,9 @@
 [ext_resource path="res://scenes/PlataformaV1.tscn" type="PackedScene" id=29]
 [ext_resource path="res://scenes/PlataformaH1.tscn" type="PackedScene" id=30]
 [ext_resource path="res://scenes/PlataformaH2.tscn" type="PackedScene" id=31]
-
+[ext_resource path="res://sonidos/muerte_enemigo.wav" type="AudioStream" id=32]
+[ext_resource path="res://sonidos/muerte_player.wav" type="AudioStream" id=33]
+[ext_resource path="res://sonidos/Liberacion_rehen.wav" type="AudioStream" id=34]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 127.823, 15.6237 )
@@ -41,14 +43,14 @@ extents = Vector2( 53.6705, 73.4031 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "atacar",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "esperar",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "atacar",
 "speed": 5.0
 } ]
 
@@ -144,14 +146,14 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
-"frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "atacar",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "esperar",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "atacar",
 "speed": 5.0
 } ]
 
@@ -502,7 +504,8 @@ stream = ExtResource( 26 )
 [node name="Ritmo" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2( -472, -48 )
 stream = ExtResource( 5 )
-volume_db = -6.433
+volume_db = -2.0
+autoplay = true
 
 [node name="Flauta" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2( -472, -48 )
@@ -513,6 +516,17 @@ autoplay = true
 position = Vector2( -472, -48 )
 stream = ExtResource( 4 )
 autoplay = true
+
+[node name="MuertePlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 33 )
+
+[node name="MuerteEnemigo" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 32 )
+volume_db = -5.0
+
+[node name="LiberacionRehen" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 34 )
+volume_db = -5.0
 
 [node name="Rehenes" type="Node" parent="."]
 
