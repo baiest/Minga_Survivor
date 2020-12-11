@@ -19,7 +19,7 @@
 [ext_resource path="res://sprites/Player/Misak/3.png" type="Texture" id=17]
 [ext_resource path="res://sprites/Rehen/2.png" type="Texture" id=18]
 [ext_resource path="res://scenes/Control.tscn" type="PackedScene" id=19]
-[ext_resource path="res://sprites/Background/backgorund.jpg" type="Texture" id=20]
+[ext_resource path="res://sprites/Background/backgorund_bucle2.jpg" type="Texture" id=20]
 [ext_resource path="res://sprites/Jefe/4.png" type="Texture" id=21]
 [ext_resource path="res://sprites/Jefe/3.png" type="Texture" id=22]
 [ext_resource path="res://sprites/Jefe/2.png" type="Texture" id=23]
@@ -468,7 +468,7 @@ anims/salto = SubResource( 11 )
 [node name="Player" type="KinematicBody2D" parent="." groups=[
 "player",
 ]]
-position = Vector2( 472, 48 )
+position = Vector2( 450, 550 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -568,7 +568,7 @@ shape = SubResource( 15 )
 [node name="Rehen4" type="StaticBody2D" parent="Rehenes" groups=[
 "rehenes",
 ]]
-position = Vector2( 9760, 560 )
+position = Vector2( 9760, 568 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -583,16 +583,46 @@ shape = SubResource( 15 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+[node name="Capa1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.8 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Capa1"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 896.0
-margin_bottom = 300.0
+margin_left = -416.0
+margin_top = -48.0
+margin_right = 3069.0
+margin_bottom = 882.0
 rect_scale = Vector2( 0.759999, 0.8 )
 texture = ExtResource( 20 )
+stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/Capa1"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2200.0
+margin_top = -56.0
+margin_right = 5910.0
+margin_bottom = 874.0
+rect_scale = Vector2( 0.759999, 0.8 )
+texture = ExtResource( 20 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Capa1"]
+position = Vector2( 1312, 256 )
+texture = ExtResource( 20 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/Capa1"]
+position = Vector2( 4792, 256 )
+texture = ExtResource( 20 )
 
 [node name="PlayerGui" type="CanvasLayer" parent="."]
 
