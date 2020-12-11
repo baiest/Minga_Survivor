@@ -12,7 +12,7 @@ var ataque = true
 onready var dist = 0
 onready var dir = 0
 func _ready():
-	pass # Replace with function body.
+	$AtaqueJefeSonido.play()
 
 #Animacion del enemigo de espera y ataque cuando se acerque el jugador
 func animacion():
@@ -34,7 +34,7 @@ func _physics_process(delta):
 	
 	if dist<distancia: 
 		$AtacarJefe.play("atacar")
-		$AtaqueJefeAudio.play()
+		
 		
 		if ataque:
 		#	$PrimerSalto.play("salto")
