@@ -52,10 +52,10 @@ func get_imput():
 func die(delta):
 	#modificada muerte cuando cae al vacio
 	if ($".".global_position.y > 700):
-		$".".global_position.y -= 500
-		$".".global_position.x -= 400
+		$".".global_position.y = 250
+		$".".global_position.x = 550
 		if (health == 0):
-			get_tree().reload_current_scene()
+			get_tree().change_scene("res://scenes/InicioGui.tscn")
 		else:
 			get_parent().get_node("PlayerGui").get_node("Health").get_child(health-1).visible = false
 		$MuertePlayer.play()
@@ -80,7 +80,8 @@ func die(delta):
 				#sonido de muerte
 				$MuertePlayer.play()
 				#Quitar un corazon y correr al jugador
-				$".".global_position.x -= 80
+				$".".global_position.y = 250
+				$".".global_position.x = 550
 				get_parent().get_node("PlayerGui").get_node("Health").get_child(health-1).visible = false
 				health -= 1
 				
@@ -90,10 +91,13 @@ func die(delta):
 			$LiberacionRehen.play()
 			collision.collider.get_node("./ColisionRehen").disabled = true
 			collision.collider.get_node("./Estado").play('libre')
-
+func win(delta):
+	if ($".".global_position.x > 13850):
+		get_tree().change_scene("res://scenes/InicioGui.tscn")
 func _physics_process(delta):
 	Velocidad.y += Gravedad * delta
 	get_imput()
 	die(delta)
+	win(delta)
 	Velocidad = move_and_slide(Velocidad, Vector2(0,-1))
 
