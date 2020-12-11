@@ -4,6 +4,7 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+export (PackedScene) var inicio_scene
 var Gravedad = 2500
 var Velocidad = Vector2()
 var run_speed = 500
@@ -72,15 +73,17 @@ func die(delta):
 		#si colisiona un enemigo mietras el enemigo esta atacando morimos
 		elif collision.collider.is_in_group('enemigo') && collision.get_collider_shape_index() == 1:
 			if (health == 0):
+				get_tree().change_scene("res://scenes/InicioGui.tscn")
 				#Reinicio del nivel
-				get_tree().reload_current_scene() 
-			else:
+				#get_tree().reload_current_scene()
+			else: 
 				#sonido de muerte
 				$MuertePlayer.play()
 				#Quitar un corazon y correr al jugador
 				$".".global_position.x -= 80
 				get_parent().get_node("PlayerGui").get_node("Health").get_child(health-1).visible = false
 				health -= 1
+				
 		#si colisiona con un rehen se desactiva el collider del rehen
 		if collision.collider.is_in_group('rehenes'):
 			#print("Liberaste al rehen ",collision.collider.get_node("./ColisionRehen").get_name())
