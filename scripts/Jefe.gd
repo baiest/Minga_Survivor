@@ -34,6 +34,7 @@ func _physics_process(delta):
 	
 	if dist<distancia: 
 		$AtacarJefe.play("atacar")
+		$AtaqueJefeAudio.play()
 		
 		if ataque:
 		#	$PrimerSalto.play("salto")
