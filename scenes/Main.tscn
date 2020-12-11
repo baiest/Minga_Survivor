@@ -468,6 +468,8 @@ one_way_collision_margin = 0.0
 [node name="PrimerSalto" type="AnimationPlayer" parent="Jefe"]
 anims/salto = SubResource( 11 )
 
+[node name="AtaqueJefeAudio" type="AudioStreamPlayer" parent="Jefe"]
+
 [node name="Player" type="KinematicBody2D" parent="." groups=[
 "player",
 ]]
